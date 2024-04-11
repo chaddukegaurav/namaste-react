@@ -30,8 +30,5 @@ const xyz = React.createElement(
   )
 );
 
-
-<div>hkjfhldflkk</div>
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(xyz);
