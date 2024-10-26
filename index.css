@@ -4,7 +4,8 @@
     border: 1px solid black;
 }
 .logo{
-    width: 180px;
+    width: 150px;
+    padding: 30px;
 }
 
 .nav-items > ul{
@@ -19,15 +20,20 @@
 }
 
 .res-card{
-    border: 1px solid black;
+   
     margin: 5px;
     width: 200px;
     background-color: antiquewhite;
     padding: 5px;
 }
 
+.res-card:hover{
+    border: 1px solid black;
+    cursor: pointer;
+}
+
 .search{
-    margin-top: 0.8%;
+padding: 10px;
 }
 .res-logo{
     width: 190px;
@@ -42,12 +48,12 @@
 .res-container{
     flex-wrap: wrap;
     display: flex;
-
 }
 
 .filter-btn {
     margin: 10px;
     cursor: pointer;
+    font-size: medium;
 }
 
 
