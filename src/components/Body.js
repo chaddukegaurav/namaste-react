@@ -5,7 +5,7 @@ import Shimmer from './Shimmer';
 import { logDOM } from '@testing-library/react';
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
-  const [filteredRestaurant, setFilteredRestaurant] = useState([])
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState('');
   console.log(searchText);
   useEffect(() => {
@@ -21,7 +21,9 @@ const Body = () => {
     setListOfRestaurants(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setFilteredRestaurant(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   return listOfRestaurants.length === 0 ? (
@@ -30,18 +32,27 @@ const Body = () => {
     <div className='body'>
       <div className='filter'>
         <div className='search'>
-          <input type='text' className='search-box' value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+          <input
+            type='text'
+            className='search-box'
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
 
-          <button onClick={() => {
-            const filteredList = listOfRestaurants.filter((f) => f.info.name.toLowerCase().includes(searchText))
+          <button
+            onClick={() => {
+              const filteredList = listOfRestaurants.filter((f) =>
+                f.info.name.toLowerCase().includes(searchText)
+              );
 
-            if (filteredList.length === 0) {
-              alert("Oops, no matching restaurants found!");
-            }
-            setFilteredRestaurant(filteredList)
-
-
-          }}>Search</button>
+              if (filteredList.length === 0) {
+                alert('Oops, no matching restaurants found!');
+              }
+              setFilteredRestaurant(filteredList);
+            }}
+          >
+            Search
+          </button>
         </div>
         <button
           className='filter-btn'
@@ -54,7 +65,6 @@ const Body = () => {
         >
           Top Rated Restaurant
         </button>
-
       </div>
 
       <div className='res-container'>
