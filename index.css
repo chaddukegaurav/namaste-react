@@ -13,6 +13,7 @@
     list-style-type: none;
     font-size: 24px;
     margin-top: 50px;
+    padding-right: 14px;
 }
 .nav-items > ul > li{
     padding: 10px;
@@ -33,7 +34,13 @@
 }
 
 .search{
+    margin-top: 2px;
 padding: 10px;
+display: flex;
+}
+
+.search-box{
+    height: 30px;
 }
 .res-logo{
     width: 190px;
@@ -71,6 +78,7 @@ padding: 10px;
 
 .login{
     padding: 0 20px;
+    /* margin-right: 2%; */
     cursor: pointer;
 }
 .filter{
