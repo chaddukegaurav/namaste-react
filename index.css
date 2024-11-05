@@ -1,86 +1,91 @@
-.header{
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid black;
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
 }
-.logo{
-    width: 150px;
-    padding: 30px;
-}
-
-.nav-items > ul{
-    display: flex;
-    list-style-type: none;
-    font-size: 24px;
-    margin-top: 50px;
-    padding-right: 14px;
-}
-.nav-items > ul > li{
-    padding: 10px;
-    margin: 10px;
+.logo {
+  width: 150px;
+  padding: 30px;
 }
 
-.res-card{
-   
-    margin: 5px;
-    width: 200px;
-    background-color: antiquewhite;
-    padding: 5px;
+.nav-items > ul {
+  display: flex;
+  list-style-type: none;
+  font-size: 24px;
+  margin-top: 50px;
+  padding-right: 14px;
+}
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 10px;
 }
 
-.res-card:hover{
-    border: 1px solid black;
-    cursor: pointer;
+.nav-items a {
+  text-decoration: none;
 }
 
-.search{
-    margin-top: 2px;
-padding: 10px;
-display: flex;
+.res-card {
+  margin: 5px;
+  width: 200px;
+  background-color: antiquewhite;
+  padding: 5px;
 }
 
-.search-box{
-    height: 30px;
+.res-card:hover {
+  border: 1px solid black;
+  cursor: pointer;
 }
-.res-logo{
-    width: 190px;
-    padding: 5px;
-    height: 120px;
+
+.search {
+  margin-top: 2px;
+  padding: 10px;
+  display: flex;
+}
+
+.search-box {
+  height: 30px;
+}
+.res-logo {
+  width: 190px;
+  padding: 5px;
+  height: 120px;
 }
 
 .res-card > h3 {
-    padding: 5px;
-    font-size: medium;
+  padding: 5px;
+  font-size: medium;
 }
-.res-container{
-    flex-wrap: wrap;
-    display: flex;
+.res-container {
+  flex-wrap: wrap;
+  display: flex;
 }
 
 .filter-btn {
-    margin: 10px;
-    cursor: pointer;
-    font-size: medium;
+  margin: 10px;
+  cursor: pointer;
+  font-size: medium;
 }
 
-
-.shimmer-container{
-    display: flex;
-    flex-wrap: wrap;
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
 }
-.shimmer-card{
-
-    width: 200px;
-    margin: 20px;
-    height: 400px;
-    background-color: #f0f0f0;
+.shimmer-card {
+  width: 200px;
+  margin: 20px;
+  height: 400px;
+  background-color: #f0f0f0;
 }
 
-.login{
-    padding: 0 20px;
-    /* margin-right: 2%; */
-    cursor: pointer;
+.login {
+  padding: 0 20px;
+  /* margin-right: 2%; */
+  cursor: pointer;
 }
-.filter{
-    display: flex;
+.filter {
+  display: flex;
+}
+
+.list-link {
+  text-decoration: none;
 }

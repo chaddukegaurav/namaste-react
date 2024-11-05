@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import RestaurantCard from '../components/RestaurantCard';
 // import { resObj } from '../utils/mockData';
 import Shimmer from './Shimmer';
-import { logDOM } from '@testing-library/react';
+import { Link } from 'react-router-dom';
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
@@ -26,6 +26,10 @@ const Body = () => {
     );
   };
 
+  var message = () => {
+    return <h1>HEllo </h1>;
+  };
+
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -46,7 +50,9 @@ const Body = () => {
               );
 
               if (filteredList.length === 0) {
-                alert('Oops, no matching restaurants found!');
+                setFilteredRestaurant(() => {
+                  return message();
+                });
               }
               setFilteredRestaurant(filteredList);
             }}
@@ -60,7 +66,8 @@ const Body = () => {
             const filteredList = listOfRestaurants.filter(
               (f) => f.info.avgRating > 4.5
             );
-            setListOfRestaurants(filteredList);
+
+            setFilteredRestaurant(filteredList);
           }}
         >
           Top Rated Restaurant
@@ -69,7 +76,13 @@ const Body = () => {
 
       <div className='res-container'>
         {filteredRestaurant.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link
+            className='list-link'
+            key={restaurant.info.id}
+            to={'/restaurants/' + restaurant.info.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
