@@ -11,6 +11,9 @@ class UserClass extends React.Component {
             count4 : 4
         }
     }
+
+    componentDidMount
+
     render(){
         const {name, location} = this.props
         const {count, count2, count3, count4} = this.state
