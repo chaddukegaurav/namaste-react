@@ -6,19 +6,17 @@ import useOnlineStatus from '../utils/useOnlineStatus';
 const Header = () => {
   const [btnHandler, setBtnHandler] = useState('Login');
 
-  const onlineStatus = useOnlineStatus()
+  const onlineStatus = useOnlineStatus();
   return (
-    <div className='header'>
-      <div className='logo-container'>
-        <img className='logo' src={LOGO_URL} />
+    <div className='flex justify-between bg-pink-50'>
+      <div className='logo-container p-4 '>
+        <img className='w-40 rounded-lg' src={LOGO_URL} />
       </div>
       <div className='nav-items'>
-        <ul>
-        <li>
-            Online Status : {onlineStatus ? '🟢' : '🔴'}
-          </li>
-          <li>
-            <Link to='/' >Home</Link>
+        <ul className='flex p-5 m-6 gap-6 font-semibold '>
+          <li>Online Status : {onlineStatus ? '🟢' : '🔴'}</li>
+          <li >
+            <Link to='/'>Home</Link>
           </li>
           <li>
             <Link to='/about'>About</Link>
@@ -27,7 +25,7 @@ const Header = () => {
             <Link to='/contact'>Contact us</Link>
           </li>
           <li>
-            <Link to='/grocery' >Grocery Store</Link>
+            <Link to='/grocery'>Grocery Store</Link>
           </li>
           <li>Cart</li>
           <button
