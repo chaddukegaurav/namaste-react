@@ -3,6 +3,7 @@ import RestaurantCard from '../components/RestaurantCard';
 // import { resObj } from '../utils/mockData';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
+import useOnlineStatus from '../utils/useOnlineStatus';
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
@@ -26,10 +27,16 @@ const Body = () => {
     );
   };
 
-  var message = () => {
-    return <h1>HEllo </h1>;
-  };
+  const onof = useOnlineStatus()
+  
+  if(onof === false){
+    return <div style={{content: "center"}}>
+      <h1>OOP'S... You are offline</h1> 
+    </div>
+  }
 
+  
+  
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -73,6 +80,8 @@ const Body = () => {
           Top Rated Restaurant
         </button>
       </div>
+
+      
 
       <div className='res-container'>
         {filteredRestaurant.map((restaurant) => (
