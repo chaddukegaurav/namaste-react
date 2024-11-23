@@ -22,9 +22,24 @@ const RestaurantCard = (props) => {
       <h3 className='py-1'>{areaName}</h3>
       <h3 className='py-1'>{costForTwo}</h3>
       <h3 className='py-1'>{cuisines.join(',  ')}</h3>
-      <h3 className='py-1'>{avgRating}</h3>
+      <h3 className='py-1 font-semibold'>{avgRating}</h3>
     </div>
   );
 };
+
+// Input will be RestaurantCard and Output will be Restraurant with Promoted Label
+
+export const withPromotedLable = (RestaurantCard) => {
+  return (props) =>{
+    return (
+      <div>
+      <label>Promoted</label>
+      <RestaurantCard {...props}/>
+      </div>
+    )
+  }
+}
+
+
 
 export default RestaurantCard;

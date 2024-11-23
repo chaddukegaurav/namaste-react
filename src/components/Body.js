@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import RestaurantCard from '../components/RestaurantCard';
+import RestaurantCard, {
+  withPromotedLable,
+} from '../components/RestaurantCard';
 // import { resObj } from '../utils/mockData';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
@@ -27,76 +29,81 @@ const Body = () => {
     );
   };
 
-  const onof = useOnlineStatus()
-  
-  if(onof === false){
-    return <div style={{content: "center"}}>
-      <h1>OOP'S... You are offline</h1> 
-    </div>
+  console.log('list of res', listOfRestaurants);
+  const onof = useOnlineStatus();
+
+  if (onof === false) {
+    return (
+      <div style={{ content: 'center' }}>
+        <h1>OOP'S... You are offline</h1>
+      </div>
+    );
   }
 
-  
-  
+  const RestaurantWithPromotedLable = withPromotedLable(RestaurantCard);
+
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-    <div className="filter flex justify-center items-center m-4 p-4">
-      {/* Search Input */}
-      <input
-        type="text"
-        className="border border-solid  rounded px-2 py-1 mr-4"
-        value={searchText}
-        onChange={(e) => setSearchText(e.target.value)}
-      />
-  
-      {/* Search Button */}
-      <button
-        className="px-4 py-2 bg-green-100 rounded-lg mr-4"
-        onClick={() => {
-          const filteredList = listOfRestaurants.filter((f) =>
-            f.info.name.toLowerCase().includes(searchText)
-          );
-          if (filteredList.length === 0) {
-            setFilteredRestaurant(() => {
-              return message();
-            });
-          }
-          setFilteredRestaurant(filteredList);
-        }}
-      >
-        Search
-      </button>
-  
-      {/* Top Rated Restaurant Button */}
-      <button
-        className="px-4 py-2 bg-green-200 rounded-lg"
-        onClick={() => {
-          const filteredList = listOfRestaurants.filter(
-            (f) => f.info.avgRating > 4.5
-          );
-          setFilteredRestaurant(filteredList);
-        }}
-      >
-        Top Rated Restaurant
-      </button>
-    </div>
-  
-    {/* Restaurant Cards */}
-    <div className="flex flex-wrap ps-6">
-      {filteredRestaurant.map((restaurant) => (
-        <Link
-          className="list-link"
-          key={restaurant.info.id}
-          to={'/restaurants/' + restaurant.info.id}
-        >
-          <RestaurantCard resData={restaurant} />
-        </Link>
-      ))}
-    </div>
-  </div>
-  
+    <div className='body'>
+      <div className='filter flex justify-center items-center m-4 p-4'>
+        {/* Search Input */}
+        <input
+          type='text'
+          className='border border-solid  rounded px-2 py-1 mr-4'
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
 
+        {/* Search Button */}
+        <button
+          className='px-4 py-2 bg-green-100 rounded-lg mr-4'
+          onClick={() => {
+            const filteredList = listOfRestaurants.filter((f) =>
+              f.info.name.toLowerCase().includes(searchText)
+            );
+            if (filteredList.length === 0) {
+              setFilteredRestaurant(() => {
+                return message();
+              });
+            }
+            setFilteredRestaurant(filteredList);
+          }}
+        >
+          Search
+        </button>
+
+        {/* Top Rated Restaurant Button */}
+        <button
+          className='px-4 py-2 bg-green-200 rounded-lg'
+          onClick={() => {
+            const filteredList = listOfRestaurants.filter(
+              (f) => f.info.avgRating > 4.5
+            );
+            setFilteredRestaurant(filteredList);
+          }}
+        >
+          Top Rated Restaurant
+        </button>
+      </div>
+
+      {/* Restaurant Cards */}
+      <div className='flex flex-wrap ps-6'>
+        {filteredRestaurant.map((restaurant) => (
+          <Link
+            className='list-link'
+            key={restaurant.info.id}
+            to={'/restaurants/' + restaurant.info.id}
+          >
+            {restaurant.info.promoted ? (
+              <RestaurantWithPromotedLable resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 };
 
