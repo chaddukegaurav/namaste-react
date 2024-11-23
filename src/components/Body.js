@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import RestaurantCard, {
   withPromotedLable,
 } from '../components/RestaurantCard';
@@ -6,6 +6,8 @@ import RestaurantCard, {
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
+import UserContext from '../utils/UserContext';
+
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
@@ -14,6 +16,8 @@ const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const {setUserName, loggedInUser} = useContext(UserContext)
 
   const fetchData = async () => {
     const data = await fetch(
@@ -85,6 +89,15 @@ const Body = () => {
         >
           Top Rated Restaurant
         </button>
+         
+        
+        <label className='ps-2'>UserName : </label>
+        <input 
+          className='border border-black '
+          onChange={(e) => setUserName(e.target.value) }
+          value={loggedInUser}
+        
+        />
       </div>
 
       {/* Restaurant Cards */}
